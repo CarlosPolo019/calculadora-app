@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "calculadora-app"
+    }
+  },
+  "defaultProject": "calculadora-app",
+  "cli": {
+    "analytics": false
+  }
 }
