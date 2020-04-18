@@ -1,25 +1,39 @@
-<div class="maindisplay" >
-   <div class="subdisplay">{{ beforeOperacion }}</div>
-   {{ newOperacion }}
+<div class="image">
+
+<div class="calculadora">
+  <input type="text" class="pantalla-calculadora" [value]="numeroActual " disabled />
+  
+  <div class="teclado-calculadora">
+    
+    <button type="button" (click) = "getOperacion('+')" class="operador" value="+">+</button>
+    <button type="button" (click) = "getOperacion('-')" class="operador" value="-">-</button>
+    <button type="button" (click) = "getOperacion('*')" class="operador" value="*">&times;</button>
+    <button type="button" (click) = "getOperacion('/')" class="operador" value="/">&divide;</button>
+
+    <button type="button" (click) = "getNumero('7')" value="7">7</button>
+    <button type="button" (click) = "getNumero('8')" value="8">8</button>
+    <button type="button" (click) = "getNumero('9')" value="9">9</button>
+
+
+    <button type="button" (click) = "getNumero('4')" value="4">4</button>
+    <button type="button" (click) = "getNumero('5')" value="5">5</button>
+    <button type="button" (click) = "getNumero('6')" value="6">6</button>
+
+
+    <button type="button" (click) = "getNumero('1')" value="1">1</button>
+    <button type="button" (click) = "getNumero('2')" value="2">2</button>
+    <button type="button" (click) = "getNumero('3')" value="3">3</button>
+
+
+    <button type="button" (click) = "getNumero('0')" value="0">0</button>
+    <button type="button" (click) = "getDecimal()" class="decimal" value=".">.</button>
+    <button type="button" (click) = "limpiar()"  class="all-clear" value="all-clear">AC</button>
+
+    <button type="button" (click) = "getOperacion('=')" class="igual" value="=">=</button>
+
+  </div>
 </div>
 
-<div class="keypad">
-   <div class="keys ackey one-line">AC</div>
-   <div class="keys opkey one-line" (click)="pressKey('/')">/</div>
-   <div class="keys numkey one-line" (click)="pressKey('7')">7</div>  
-   <div class="keys numkey one-line" (click)="pressKey('8')">8</div>
-   <div class="keys numkey one-line" (click)="pressKey('9')">9</div>  
-   <div class="keys opkey one-line" (click)="pressKey('x')">x</div>
-   <div class="keys numkey one-line" (click)="pressKey('4')">4</div>  
-   <div class="keys numkey one-line" (click)="pressKey('5')">5</div>  
-   <div class="keys numkey one-line" (click)="pressKey('6')">6</div>
-   <div class="keys opkey one-line" (click)="pressKey('-')">-</div>  
-   <div class="keys numkey one-line" (click)="pressKey('1')">1</div>
-   <div class="keys numkey one-line" (click)="pressKey('2')">2</div>
-   <div class="keys numkey one-line" (click)="pressKey('3')">3</div>    
-   <div class="keys opkey one-line" (click)="pressKey('+')">+</div>
-   <div class="keys numkey zerokey one-line" (click)="pressKey('0')">0</div>
-   <div class="keys numkey one-line" (click)="pressKey('.')">.</div>  
-   <div class="keys equalkey one-line" (click)="getAnswer()">=</div>  
-</div>
+  
 
+</div>

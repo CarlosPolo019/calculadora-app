@@ -6,83 +6,80 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'calculadora-app';
+  title = 'Calculadora app';
 
-newOperacion = '' ;
-beforeOperacion = '' ;
-operand1: number; // The first operand
-operand2: number; // The second operand
-operator = ''; // The operator
-calculationString = ''; 
-// This is the string that denotes the operation being performed
-answered = false; 
-// A flag to check whether the solution has been processed
-operatorSet = false; // You'll see how this is used soon
+  numeroActual = '0';
+  operacion1 = null;
+  operador = null;
+  estadoNumero = false;
 
+  constructor() { }
 
+  ngOnInit() {
+  }
 
- pressKey(key: string) {
-   if (key === '/' || key === 'x' || key === '-' || key === '+') {
-      const lastKey = this.newOperacion[this.newOperacion.length - 1];
-      if (lastKey === '/' || lastKey === 'x' || lastKey === '-' || lastKey === '+')  {
-        this.operatorSet = true;
-      }
-      if ((this.operatorSet) || (this.newOperacion === '')) {
-        return;
-      }
-      this.operand1 = parseFloat(this.newOperacion);
-      this.operator = key;
-      this.operatorSet = true;
-   }
-   if (this.newOperacion.length === 10) {
-     return;
-   }
-   this.newOperacion += key;
-}
+  getNumero(v: string){
+    console.log(v);
+    if(this.estadoNumero)
+    {
+      this.numeroActual = v;
+      this.estadoNumero = false;
+    }else{
+      this.numeroActual === '0'? this.numeroActual = v: this.numeroActual += v;
 
-
-
-
-
-getAnswer() {
-    this.calculationString = this.newOperacion;
-    this.operand2 = parseFloat(this.newOperacion.split(this.operator)[1]);
-    if (this.operator === '/') {
-      this.beforeOperacion = this.newOperacion;
-      this.newOperacion = (this.operand1 / this.operand2).toString();
-      this.beforeOperacion = this.calculationString;
-      if (this.newOperacion.length > 9) {
-        this.newOperacion = this.newOperacion.substr(0, 9);
-      }
-    } else if (this.operator === 'x') {
-      this.beforeOperacion = this.newOperacion;
-      this.newOperacion = (this.operand1 * this.operand2).toString();
-      this.beforeOperacion = this.calculationString;
-      if (this.newOperacion.length > 9) {
-        this.newOperacion = 'ERROR';
-        this.beforeOperacion = 'Range Exceeded';
-      }
-    } else if (this.operator === '-') {
-      this.beforeOperacion = this.newOperacion;
-      this.newOperacion = (this.operand1 - this.operand2).toString();
-      this.beforeOperacion = this.calculationString;
-    } else if (this.operator === '+') {
-      this.beforeOperacion = this.newOperacion;
-      this.newOperacion = (this.operand1 + this.operand2).toString();
-      this.beforeOperacion = this.calculationString;
-      if (this.newOperacion.length > 9) {
-        this.newOperacion = 'ERROR';
-        this.beforeOperacion = 'Range Exceeded';
-      }
-    } else {
-      this.beforeOperacion = 'ERROR: Invalid Operation';
     }
-    this.answered = true;
+  }
+
+ getUrl()
+{
+  return "url('http://estringsoftware.com/wp-content/uploads/2017/07/estring-header-lowsat.jpg')";
 }
 
+  getDecimal(){
+    if(!this.numeroActual.includes('.')){
+        this.numeroActual += '.'; 
+    }
+  }
+
+   doCalculation(op , operacion2){
+    switch (op){
+      case '+':
+      return this.operacion1 += operacion2; 
+      case '-': 
+      return this.operacion1 -= operacion2; 
+      case '*': 
+      return this.operacion1 *= operacion2; 
+      case '/': 
+      return this.operacion1 /= operacion2; 
+      case '=':
+      return operacion2;
+    }
+  }
+   getOperacion(op: string){
+    console.log(op);
+
+    if(this.operacion1 === null){
+      this.operacion1 = Number(this.numeroActual);
+
+    }else if(this.operador){
+      const result = this.doCalculation(this.operador , Number(this.numeroActual))
+      this.numeroActual = String(result);
+      this.operacion1 = result;
+    }
+    this.operador = op;
+    this.estadoNumero = true;
+    console.log("Prueba " + this.operador)
+    console.log(this.operacion1);
+ 
+  }
+
+   limpiar(){
+    this.numeroActual = '0';
+    this.operacion1 = null;
+    this.operador = null;
+    this.estadoNumero = false;
+  }
+
 
 
 }
-
-
-
