@@ -5,9 +5,8 @@ Desarrollo de una calculadora funcional que permita realizar las operaciones bá
 ## Requisitos para la Calculadora
 
 * La aplicación será desarrollada en Angular.
-* Listado de botones:
-      * Las operaciones son (+,-,*, /) 
-      * Los números del 1 al 9
+    * Listado de botones:
+      * Las operaciones son (+,-,*, /) * Los números del 1 al 9
       * Decimal (.)
       * Botón igual (=) para el resultado
       * Boton (AC) que significa all clear es para limpiar
