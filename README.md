@@ -1,5 +1,8 @@
 # CalculadoraApp
 
+![alt text](https://github.com/CarlosPolo019/calculadora-app/blob/master/src/assets/DEMO.png)
+
+
 Desarrollo de una calculadora funcional que permita realizar las operaciones básicas (suma, resta , multiplicación y división) y que permita realizar las  operaciones con decimales (.)
 
 ## Requisitos para la Calculadora
@@ -22,4 +25,6 @@ Los archivos donde se desarrollo la app están en la carpeta app y son 3:
 *	app.component.html (contiene todo el html la tabla o la organización en boostrap de los campos de la calculadora)
 *	app.component.css (contiene las clases que van afectar las etiquetas y atributos del html)
 *	app.component.ts (contiene variables globales y los métodos que se van a utilizar en la pagina)
+
+
 
