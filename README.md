@@ -1,7 +1,16 @@
 # CalculadoraApp
 
+Desarrollo de una calculadora funcional que permita realizar las operaciones básicas (suma, resta , multiplicación y división) y que permita realizar las  operaciones con decimales (.)
 
 ## Requisitos para la Calculadora
+
+* La aplicación será desarrollada en Angular.
+* Listado de botones:
+      * Las operaciones son (+,-,*, /) 
+      * Los números del 1 al 9
+      * Decimal (.)
+      * Botón igual (=) para el resultado
+      * Boton (AC) que significa all clear es para limpiar
 
 *	 El código debe ser original y no tomado de ninguna fuente de internet (evitar codepen y cualquiera por el estilo, quiero soluciones realizadas por ustedes)
 *	Las operaciones deben funcionar de manera correcta
