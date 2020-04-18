@@ -1,84 +1,85 @@
-import { Component } from '@angular/core';
+import {
+    Component
+} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Calculadora app';
+    title = 'Calculadora app';
 
-  numeroActual = '0';
-  operacion1 = null;
-  operador = null;
-  estadoNumero = false;
+    numeroActual = '0';
+    operacion1 = null;
+    estadoNumero = false;
+    estadoDecimal = false;
+    beforeOperacion = '';
+    newOperacion = '';
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-  }
+    ngOnInit() {}
 
-  getNumero(v: string){
-    console.log(v);
-    if(this.estadoNumero)
-    {
-      this.numeroActual = v;
-      this.estadoNumero = false;
-    }else{
-      this.numeroActual === '0'? this.numeroActual = v: this.numeroActual += v;
+    getNumero(v: string) {
+        console.log(v);
+        if (this.estadoNumero) {
+            this.numeroActual = v;
+            this.estadoNumero = false;
+        } else {
+            this.numeroActual === '0' ? this.numeroActual = v : this.numeroActual += v;
+
+        }
+    }
+
+    getUrl() {
+        return "url('http://estringsoftware.com/wp-content/uploads/2017/07/estring-header-lowsat.jpg')";
+    }
+
+    getDecimal() {
+        if (!this.numeroActual.includes('.')) {
+            this.numeroActual += '.';
+        } else {
+            if (this.estadoDecimal) {
+                this.numeroActual += '.';
+                this.estadoDecimal = false;
+            }
+        }
+    }
+
+
+    getOperacion(op: string) {
+
+        if (op == "=") {
+
+            try {
+                const result = eval(this.numeroActual);
+                this.beforeOperacion = this.numeroActual;
+                this.numeroActual = String(result);
+                //  this.estadoNumero = true;
+            } catch (e) {
+                if (e instanceof SyntaxError) {
+                    alert("No es valida la operacion");
+                    return
+                }
+            }
+
+            return
+        } else {
+
+            this.numeroActual += op
+            this.estadoDecimal = true;
+
+        }
+
 
     }
-  }
 
- getUrl()
-{
-  return "url('http://estringsoftware.com/wp-content/uploads/2017/07/estring-header-lowsat.jpg')";
-}
-
-  getDecimal(){
-    if(!this.numeroActual.includes('.')){
-        this.numeroActual += '.'; 
+    limpiar() {
+        this.numeroActual = '0';
+        this.beforeOperacion = '';
+        this.estadoNumero = false;
     }
-  }
-
-   doCalculation(op , operacion2){
-    switch (op){
-      case '+':
-      return this.operacion1 += operacion2; 
-      case '-': 
-      return this.operacion1 -= operacion2; 
-      case '*': 
-      return this.operacion1 *= operacion2; 
-      case '/': 
-      return this.operacion1 /= operacion2; 
-      case '=':
-      return operacion2;
-    }
-  }
-   getOperacion(op: string){
-    console.log(op);
-
-    if(this.operacion1 === null){
-      this.operacion1 = Number(this.numeroActual);
-
-    }else if(this.operador){
-      const result = this.doCalculation(this.operador , Number(this.numeroActual))
-      this.numeroActual = String(result);
-      this.operacion1 = result;
-    }
-    this.operador = op;
-    this.estadoNumero = true;
-    console.log("Prueba " + this.operador)
-    console.log(this.operacion1);
- 
-  }
-
-   limpiar(){
-    this.numeroActual = '0';
-    this.operacion1 = null;
-    this.operador = null;
-    this.estadoNumero = false;
-  }
 
 
 
