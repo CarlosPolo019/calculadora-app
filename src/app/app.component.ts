@@ -17,10 +17,6 @@ export class AppComponent {
     beforeOperacion = '';
     newOperacion = '';
 
-    constructor() {}
-
-    ngOnInit() {}
-
     getNumero(v: string) {
         console.log(v);
         if (this.estadoNumero) {
@@ -48,30 +44,26 @@ export class AppComponent {
     }
 
 
+
     getOperacion(op: string) {
 
         if (op == "=") {
+            const ultimoC = this.numeroActual.charAt(this.numeroActual.length - 1);
+            var re = new RegExp("([0-9])");
 
-            try {
+            if (re.test(ultimoC)) {
                 const result = eval(this.numeroActual);
                 this.beforeOperacion = this.numeroActual;
                 this.numeroActual = String(result);
-                //  this.estadoNumero = true;
-            } catch (e) {
-                if (e instanceof SyntaxError) {
-                    alert("No es valida la operacion");
-                    return
-                }
+            } else {
+                alert("No es valida la operacion");
+                this.limpiar();
             }
 
-            return
-        } else {
-
+        }else{
             this.numeroActual += op
             this.estadoDecimal = true;
-
         }
-
 
     }
 
